@@ -1,0 +1,9 @@
+from:
+  id: 1
+  name: "From Airport"
+  code: "FAP"
+
+to:
+  id: 2
+  name: "To Airport"
+  code: "TAP"
