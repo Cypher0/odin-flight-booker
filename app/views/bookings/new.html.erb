@@ -1,0 +1,35 @@
+<h1>Booking Information</h1>
+<table>
+  <tr>
+    <th>Flight ID</th>
+    <th>Date</th>
+    <th>From</th>
+    <th>To</th>
+  </tr>
+  <tr>
+    <td><%= @flight.id %></td>
+    <td><%= @flight.date.strftime("%d %b %Y %H:%M") %></td>
+    <td><%= @flight.from_airport.code %></td>
+    <td><%= @flight.to_airport.code %></td>
+  </tr>
+</table>
+<%= form_for @booking do |f| %>
+  <% if @booking.errors.any? %>
+    Could not submit booking:
+    <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= hidden_field_tag :flight_id, @flight.id %>
+  <%= f.fields_for :passengers do |ff| %>
+
+    <%= ff.label :name %>
+    <%= ff.text_field :name %>
+
+    <%= ff.label :email %>
+    <%= ff.text_field :email %></br>
+  <% end %>
+  <%= f.submit "Book Tickets" %>
+<% end %>

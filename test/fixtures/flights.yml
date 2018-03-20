@@ -1,0 +1,6 @@
+test_flight:
+  id: 1
+  from_airport_id: 1
+  to_airport_id: 2
+  date: <%= Time.now %>
+  duration: "01h01m"

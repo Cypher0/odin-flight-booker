@@ -1,0 +1,18 @@
+<h1>Your Ticket Information</h1>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>From</th>
+    <th>To</th>
+  </tr>
+  <tr>
+    <td><%= @booking.flight.date.strftime("%d %b %Y %H:%M") %></td>
+    <td><%= @booking.flight.from_airport.name %></td>
+    <td><%= @booking.flight.to_airport.name %></td>
+  </tr>
+</table>
+<h4>Passengers:</h4>
+<% @booking.passengers.each do |passenger| %>
+  <p><b><%= "#{passenger.name}" %></b> <%= "#{passenger.email}" %></p>
+<% end %>
+<%= link_to "Home", root_path %>

@@ -1,0 +1,11 @@
+test_passenger:
+  id: 1
+  booking_id: 1
+  name: "Example Passenger"
+  email: "passenger@example.com"
+
+other_passenger:
+  id: 2
+  booking_id: 1
+  name: "Other Passenger"
+  email: "other@passenger.com"

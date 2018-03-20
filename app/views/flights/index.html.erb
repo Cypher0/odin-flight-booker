@@ -1,0 +1,35 @@
+<%= form_tag(flights_path, :method => "get") do %>
+  From:
+  <%= select_tag(:from_airport, options_for_select(@airport_options)) %> 
+  To:
+  <%= select_tag(:to_airport, options_for_select(@airport_options)) %>
+  Date:
+  <%= select_tag(:date, options_for_select(@available_dates)) %>
+  Tickets:
+  <%= select_tag(:num_tickets, options_for_select(1..4)) %>
+  <%= submit_tag "View Flights" %>
+<% end %>
+<% if @flight_results.any? %>
+  <table>
+    <tr>
+      <th></th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th>Duration</th>
+    </tr>
+    <%= form_tag(new_booking_path, :method => "get") do %>
+      <%= hidden_field_tag(:num_tickets, params[:num_tickets]) %>
+      <% @flight_results.each do |flight| %>
+        <tr>
+          <td><%= radio_button_tag 'selected_flight', flight.id %></td>
+          <td><%= Airport.find(flight.from_airport_id).name %></td>
+          <td><%= Airport.find(flight.to_airport_id).name %></td>
+          <td><%= flight.date.strftime("%d %b %Y %H:%M") %></td>
+          <td><%= flight.duration %></td>
+        </tr>
+      </table>
+      <% end %>
+      <%= submit_tag "Select Flight" %>
+    <% end %>
+<% end %>
