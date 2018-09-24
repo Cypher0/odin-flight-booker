@@ -11,6 +11,8 @@ class BookingsController < ApplicationController
     @booking = @flight.bookings.build(booking_params)
     if @booking.save
       redirect_to booking_path(@booking)
+      PassengerMailer.with(booking: @booking, 
+                           passenger: @booking.passengers.first).thank_you_email.deliver_now!
     else
       render 'new'
     end

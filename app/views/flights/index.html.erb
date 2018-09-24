@@ -1,12 +1,12 @@
 <%= form_tag(flights_path, :method => "get") do %>
   From:
-  <%= select_tag(:from_airport, options_for_select(@airport_options)) %> 
+  <%= select_tag(:from_airport, options_for_select(@airport_options)) %></br>
   To:
-  <%= select_tag(:to_airport, options_for_select(@airport_options)) %>
+  <%= select_tag(:to_airport, options_for_select(@airport_options)) %></br>
   Date:
-  <%= select_tag(:date, options_for_select(@available_dates)) %>
+  <%= select_tag(:date, options_for_select(@available_dates)) %></br>
   Tickets:
-  <%= select_tag(:num_tickets, options_for_select(1..4)) %>
+  <%= select_tag(:num_tickets, options_for_select(1..4)) %></br>
   <%= submit_tag "View Flights" %>
 <% end %>
 <% if @flight_results.any? %>
@@ -28,8 +28,8 @@
           <td><%= flight.date.strftime("%d %b %Y %H:%M") %></td>
           <td><%= flight.duration %></td>
         </tr>
-      </table>
-      <% end %>
-      <%= submit_tag "Select Flight" %>
+      <% end %>  
+    </table>
+    <%= submit_tag "Select Flight" %>
     <% end %>
 <% end %>
